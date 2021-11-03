@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@swimlane/ngx-dnd/release/index.css';
+
+// Applying color based on dnd level
+$color: (#CD5C5C, #C71585, #FF0000, #1ab121, #1576ad, #0e090b, #9e900e, #0b7745, #1d0894, #91071e, #6e0a4d,);
+$length: length($color);
+
+
+@function getClassName($noOfTimes) {
+    $val: '';
+    @for $i from 1 through $noOfTimes {
+        $val: $val + ' .ngx-dnd-container';
+    }
+    @return $val;
+}
+
+@for $i from 1 through $length {
+  #{getClassName($i)} {
+    background-color: nth($color, $i);
+  }
+}
